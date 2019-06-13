@@ -6,6 +6,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 62.5%;
+  background: #041e42;
+  font-family: "Bogle";
 }
 
 code {
@@ -19,4 +21,42 @@ code {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+@font-face {
+  font-family: "Bogle";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/Bogle/BogleWeb-Regular.eot"); /* IE9 Compat Modes */
+  src: local("Open Sans"), local("OpenSans"),
+    url("./assets/fonts/Bogle/BogleWeb-Regular.woff2") format("woff2"),
+    /* Super Modern Browsers */
+      url("./assets/fonts/Bogle/BogleWeb-Regular.woff") format("woff"),
+    /* Modern Browsers */ url("./assets/fonts/Bogle/BogleWeb-Regular.ttf")
+      format("truetype"); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: "Bogle Black";
+  font-style: normal;
+  font-weight: 600;
+  src: url("./assets/fonts/BogleBlack/BogleWeb-Black.eot"); /* IE9 Compat Modes */
+  src: local("Open Sans"), local("OpenSans"),
+    url("./assets/fonts/BogleBlack/BogleWeb-Black.woff2") format("woff2"),
+    /* Super Modern Browsers */
+      url("./assets/fonts/BogleBlack/BogleWeb-Black.woff") format("woff"),
+    /* Modern Browsers */ url("./assets/fonts/BogleBlack/BogleWeb-Black.ttf")
+      format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: "Bogle Bold";
+  font-style: normal;
+  font-weight: 800;
+  src: url("./assets/fonts/BogleBold/BogleWeb-Bold.eot"); /* IE9 Compat Modes */
+  src: local("Open Sans"), local("OpenSans"),
+    url("./assets/fonts/BogleBold/BogleWeb-Bold.woff2") format("woff2"),
+    /* Super Modern Browsers */
+      url("./assets/fonts/BogleBold/BogleWeb-Bold.woff") format("woff"),
+    /* Modern Browsers */ url("./assets/fonts/BogleBold/BogleWeb-Bold.ttf")
+      format("truetype"); /* Safari, Android, iOS */
 }

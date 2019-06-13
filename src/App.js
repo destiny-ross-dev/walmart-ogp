@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import logoSrc from "./Spark.png";
+import logoSrc from "./assets/images/Spark.png";
 import { StyledButton, StyledContainer } from "./styled/Reusable";
+import { slideUp } from "./styled/Animations";
 
 const theme = {
   lightBlue: "#6cace4",
@@ -11,18 +12,6 @@ const theme = {
   white: "#ffffff"
 };
 
-const LoadingContainer = styled(StyledContainer)`
-  background: ${props => props.theme.darkBlue};
-  width: 100vw;
-  height: 100vh;
-
-  & img {
-    width: 120px;
-    height: 128px;
-    margin-bottom: 20vh;
-  }
-`;
-
 const LoginContainer = styled(StyledContainer)`
   justify-content: space-between;
   background: ${props => props.theme.darkBlue};
@@ -30,27 +19,49 @@ const LoginContainer = styled(StyledContainer)`
   height: 100vh;
   padding: 0 2em;
 
+  & h2 {
+    font-size: 2em;
+    align-self: flex-start;
+    margin: 0 1em;
+    font-weight: 800;
+  }
+
   & img {
     width: 120px;
     height: 128px;
-    margin: auto auto;
+    margin: auto;
+    transition: 0.3s margin ease-in-out;
   }
   & input {
-    width: 90vw;
-    height: 24px;
-    margin: 2vh 0;
+    width: 94vw;
+    height: 2.4em;
+    margin: 10px 0;
     border: unset;
     border-bottom: 1px solid grey;
-    padding: 1em 0.5em;
+    padding: 5px 0.35em;
     font-size: 1.6em;
+    /* font-family: "Bogle Black"; */
+  }
+
+  & a {
+    margin: 20px 1.5em;
+    font-size: 1.4em;
+    font-family: "Bogle";
+    align-self: flex-start;
+    /* padding: 1em 1.5em 0 1.5em; */
+  }
+  & button {
+    margin-top: 0;
   }
 `;
+
 const InputContainer = styled(StyledContainer)`
-  padding: 5vh 0;
+  padding: 4vh 0;
   background: ${props => props.theme.white};
   width: 100vw;
   height: 70vh;
   justify-content: flex-start;
+  animation: ${slideUp} 0.3s ease-in-out;
 `;
 
 function App() {
@@ -63,21 +74,18 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div>
-        {loading && (
-          <LoadingContainer>
-            <img src={logoSrc} />
-          </LoadingContainer>
-        )}
-        {!loading && (
-          <LoginContainer>
-            <img src={logoSrc} />
+        <LoginContainer>
+          <img src={logoSrc} />
+          {!loading && (
             <InputContainer>
+              <h2>Login</h2>
               <input placeholder="User ID" />
               <input placeholder="Password" type="password" />
+              <a href="#">Forgot your password?</a>
               <StyledButton>Login</StyledButton>
             </InputContainer>
-          </LoginContainer>
-        )}
+          )}
+        </LoginContainer>
       </div>
     </ThemeProvider>
   );

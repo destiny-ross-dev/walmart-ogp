@@ -8,7 +8,8 @@ export const StyledButton = styled.button`
   padding: 0.7em 2em;
   color: ${props => props.theme.white};
   align-self: flex-end;
-  font-size: 14px;
+  font-size: 16px;
+  font-family: "Bogle Black";
 `;
 export const StyledContainer = styled.div`
   display: flex;
