@@ -6,8 +6,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 62.5%;
-  background: #041e42;
   font-family: "Bogle";
+  color: white;
 }
 
 code {
