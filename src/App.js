@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled, { ThemeProvider } from "styled-components";
-import logoSrc from "./assets/images/Spark.png";
-import { StyledButton, StyledContainer } from "./styled/Reusable";
-import { slideUp } from "./styled/Animations";
+import { StyledContainer } from "./styled/Reusable";
 import routes from "./routes";
 import { withRouter } from "react-router-dom";
-import LoginPage from "./pages/LoginPage";
 import Header from "./components/Header/Header";
 
 const theme = {
