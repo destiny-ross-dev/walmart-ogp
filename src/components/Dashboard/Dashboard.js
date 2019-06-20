@@ -13,8 +13,15 @@ const DashboardContainer = styled(StyledContainer)`
 
 function Dashboard(props) {
   useEffect(() => {
-    
+    loadData();
   });
+  const loadData = async () => {
+    
+    if(!props.token){
+      props.history.push("/");
+    }
+    console.log(`console logging:`, props)
+  };
   
   return (
     <DashboardContainer>
