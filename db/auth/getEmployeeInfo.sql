@@ -1,0 +1,1 @@
+SELECT first_name, last_name, phone FROM employees where user_id = $1;

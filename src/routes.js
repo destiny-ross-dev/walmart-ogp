@@ -6,7 +6,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 
 export default (
   <Switch>
-    <Route exact path="/" render={props => <LoginPage {...props} />} />
+    <Route exact path="/" render={props => <LoginPage {...props} loginUser={props.loginUser}/>} />
     <Route path="/dashboard" render={props => <Dashboard {...props} />} />
   </Switch>
 );

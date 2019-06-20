@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { StyledContainer } from "./styled/Reusable";
-import routes from "./routes";
-import { withRouter } from "react-router-dom";
+// import routes from "./routes";
+import { withRouter, Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
+import LoginPage from './pages/LoginPage';
+import Dashboard from './components/Dashboard/Dashboard'
 
 const theme = {
   lightBlue: "#6cace4",
@@ -18,11 +20,17 @@ const AppContainer = styled(StyledContainer)`
 `;
 
 function App(props) {
+  const [user, setUser] = useState({token:"", user: {}});
+  const [token, setToken] = useState("");
+
   return (
     <ThemeProvider theme={theme}>
       <AppContainer>
         {props.location.pathname !== "/" && <Header />}
-        {routes}
+        <Switch>
+    <Route exact path="/" render={props => <LoginPage {...props} user={user} setUser={setUser}/>} />
+    <Route path="/dashboard" render={props => <Dashboard {...props} {...user}/> } />
+  </Switch>
       </AppContainer>
     </ThemeProvider>
   );

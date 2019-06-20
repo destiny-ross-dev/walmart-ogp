@@ -1,0 +1,1 @@
+SELECT user_id, username, email, hashpass, user_type FROM users where username = $1;

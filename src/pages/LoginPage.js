@@ -3,14 +3,7 @@ import styled, { ThemeProvider } from "styled-components";
 import logoSrc from "../assets/images/Spark.png";
 import { StyledButton, StyledContainer } from "../styled/Reusable";
 import { slideUp } from "../styled/Animations";
-
-const theme = {
-  lightBlue: "#6cace4",
-  blue: "#0071ce",
-  darkBlue: "#041e42",
-  yellow: "#ffc220",
-  white: "#ffffff"
-};
+import axios from 'axios'
 
 const LoginContainer = styled(StyledContainer)`
   justify-content: space-between;
@@ -96,14 +89,14 @@ function LoginPage(props) {
     }, 1000);
   });
 
-  const login = e => {
-    console.log(loginObj);
-    if (
-      loginObj.username.toLowerCase() === "d0r01gg" &&
-      loginObj.password.toLowerCase() === "dr3722"
-    ) {
-      props.history.push("/dashboard");
-    }
+  const login = async e => {
+    // console.log(loginObj);
+    let loginRequest = await axios.post("/auth/login", {loginObj})
+    console.log(loginRequest)
+    props.setUser(loginRequest.data)
+    props.history.push("/dashboard");
+      // console.log(props.user)
+    
   };
 
   const handleInput = e => {
