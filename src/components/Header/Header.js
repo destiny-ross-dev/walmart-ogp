@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import logo from "../../assets/images/Spark-small.png";
 import styled from "styled-components";
 import "./NavIcon.css";

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
+import { Link } from "react-router-dom";
 import logoSrc from "../assets/images/Spark.png";
 import { StyledButton, StyledContainer } from "../styled/Reusable";
 import { slideUp } from "../styled/Animations";
-import axios from 'axios'
+import axios from "axios";
 
 const LoginContainer = styled(StyledContainer)`
   justify-content: space-between;
@@ -70,6 +71,10 @@ const InputContainer = styled(StyledContainer)`
     height: 60vh;
     /* align-self: flex-end; */
   }
+
+  & span {
+    margin-top: auto;
+  }
 `;
 
 function LoginPage(props) {
@@ -84,19 +89,17 @@ function LoginPage(props) {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  });
+    let timer1 = setTimeout(() => setLoading(false), 1000);
+    return () => {
+      clearTimeout(timer1);
+    };
+  }, []);
 
   const login = async e => {
-    // console.log(loginObj);
-    let loginRequest = await axios.post("/auth/login", {loginObj})
-    console.log(loginRequest)
-    props.setUser(loginRequest.data)
+    let loginRequest = await axios.post("/auth/login", { loginObj });
+    console.log(loginRequest);
+    props.setUser(loginRequest.data);
     props.history.push("/dashboard");
-      // console.log(props.user)
-    
   };
 
   const handleInput = e => {
@@ -125,6 +128,9 @@ function LoginPage(props) {
           />
           <a href="#">Forgot your password?</a>
           <StyledButton onClick={() => login()}>Login</StyledButton>
+          <span>
+            <Link to="/signup">Don't have an account? Create one.</Link>
+          </span>
         </InputContainer>
       )}
     </LoginContainer>

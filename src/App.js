@@ -5,8 +5,8 @@ import { StyledContainer } from "./styled/Reusable";
 import { withRouter, Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import LoginPage from "./pages/LoginPage";
-import Dashboard from "./components/Dashboard/Dashboard";
-import axios from 'axios'
+import DashboardPage from "./pages/DashboardPage";
+import axios from "axios";
 const theme = {
   lightBlue: "#6cace4",
   blue: "#0071ce",
@@ -23,19 +23,22 @@ function App(props) {
   const [user, setUser] = useState({ token: "", user: {} });
   const [token, setToken] = useState("");
 
-  useEffect( () => {
-    getUser()    
-  }, [])
-const getUser = async () => {
-  let user = await axios.post('/auth/me')
-    setUser(user.data)
-    props.history.push('/dashboard')
-}
+  useEffect(() => {
+    getUser();
+  }, []);
+  const getUser = async () => {
+    let user = await axios.post("/auth/me");
+    setUser(user.data);
+    props.history.push("/dashboard");
+  };
+  const hideNavArray = ["/", "/signup"];
+  let { pathname } = props.location;
 
+  const hideNav = hideNavArray.includes(pathname);
   return (
     <ThemeProvider theme={theme}>
       <AppContainer>
-        {props.location.pathname !== "/" && <Header />}
+        {!hideNav && <Header />}
         <Switch>
           <Route
             exact
@@ -46,7 +49,9 @@ const getUser = async () => {
           />
           <Route
             path="/dashboard"
-            render={props => <Dashboard {...props} {...user} setUser={setUser}/>}
+            render={props => (
+              <DashboardPage {...props} {...user} setUser={setUser} />
+            )}
           />
         </Switch>
       </AppContainer>

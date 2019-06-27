@@ -4,7 +4,8 @@ process.env.NODE_ENV = process.env.NODE_ENV || "development";
 const env = process.env.NODE_ENV;
 
 const baseConfig = {
-  port: 3123
+  port: 3123,
+  sessionSecret: ""
 };
 
 let envConfig = {};
@@ -26,4 +27,5 @@ switch (env) {
     envConfig = require("./dev");
 }
 const appConfig = merge(baseConfig, envConfig);
+console.log(appConfig);
 module.exports = appConfig;
