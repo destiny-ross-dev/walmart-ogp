@@ -12,7 +12,8 @@ const theme = {
   blue: "#0071ce",
   darkBlue: "#041e42",
   yellow: "#ffc220",
-  white: "#ffffff"
+  white: "#ffffff",
+  gray: "#f9f9f9"
 };
 
 const AppContainer = styled(StyledContainer)`
