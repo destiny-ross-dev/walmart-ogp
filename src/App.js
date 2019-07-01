@@ -6,6 +6,8 @@ import { withRouter, Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
+import RegisterPage from "./pages/RegisterPage";
+
 import axios from "axios";
 const theme = {
   lightBlue: "#6cace4",
@@ -52,6 +54,12 @@ function App(props) {
             path="/dashboard"
             render={props => (
               <DashboardPage {...props} {...user} setUser={setUser} />
+            )}
+          />
+          <Route
+            path="/signup"
+            render={props => (
+              <RegisterPage {...props} {...user} setUser={setUser} />
             )}
           />
         </Switch>
