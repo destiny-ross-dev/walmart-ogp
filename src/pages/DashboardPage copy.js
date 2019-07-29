@@ -8,9 +8,9 @@ const DashboardContainer = styled(StyledContainer)`
   color: black;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  /* height: calc(100vh - 45px); */
+  height: calc(100vh - 45px);
   width: 100%;
 
   @media only screen and (min-width: 600px) {
@@ -20,27 +20,26 @@ const DashboardContainer = styled(StyledContainer)`
 
   & h1 {
     width: 100%;
-    margin: 10px 0 15px auto;
+    margin: 10px 0 5px auto;
     text-align: center;
     align-self: flex-start;
   }
 `;
+const DashboardComponent = styled(StyledContainer)``;
 const TaskContainer = styled(StyledContainer)`
+  flex-grow: 1;
   border: 0.5px solid ${props => props.theme.gray};
-  width: 45%;
-  height: 100px;
-  margin: 10px 5px;
+  width: 100%;
+  max-width: 250px;
+  max-height: 150px;
+  margin: 10px auto;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  max-width: 300px;
-  /* @media only screen and (min-width: 600px) {
+
+  @media only screen and (min-width: 600px) {
     align-self: flex-end;
     margin: 5px auto 25px auto;
     min-height: 150px;
-  } */
+  }
 
   p {
     font-size: 1rem;
@@ -63,24 +62,28 @@ function Dashboard(props) {
     console.log(`console logging:`, props);
   };
 
-  return props.token ? (
+  return (
     <DashboardContainer>
-      {props.user.user_type == "employee" && (
-        <h1>Hello, {props.user.first_name}</h1>
+      {props.token ? (
+        <Dashboard>
+          {props.user.user_type == "employee" && (
+            <h1>Hello, {props.user.first_name}</h1>
+          )}
+          <TaskContainer>
+            <p>View All Upcoming Orders</p>
+          </TaskContainer>
+          <TaskContainer>
+            <p>Current Orders</p>
+          </TaskContainer>
+          <TaskContainer>
+            <p>Review Completed Orders</p>
+          </TaskContainer>
+          <TaskContainer>other thing here</TaskContainer>
+        </Dashboard>
+      ) : (
+        <h1>loading..</h1>
       )}
-      <TaskContainer>
-        <p>View All Upcoming Orders</p>
-      </TaskContainer>
-      <TaskContainer>
-        <p>Current Orders</p>
-      </TaskContainer>
-      <TaskContainer>
-        <p>Review Completed Orders</p>
-      </TaskContainer>
-      <TaskContainer>other thing here</TaskContainer>
     </DashboardContainer>
-  ) : (
-    <h1>loading..</h1>
   );
 }
 
